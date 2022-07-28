@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="containe-fluid">
+                <div class="row mt-3 ml-3 mr-3">
+                    <div class="col-lg-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="card" style="width: 70rem;">
+                                    <img src="{{member.memberImage.url}}" class="card-img-top my-3" alt="photo" style="width:200px; height=200px">
+                                    <div class="card-body">
+                                    <h3>Memebers Info</h3>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h5>Full Name: <span class="text-secondary mx-3">{{member.firstName}}  {{member.lastName}}</span></h5></li>
+                                        <li class="list-group-item"><h5>Email: <span class="text-secondary mx-3">{{member.email}}</span></h5></li>
+                                        <li class="list-group-item"><h5>Phone Number: <span class="text-secondary mx-3">{{member.phoneNumber}}</span></h5></li>
+                                        <li class="list-group-item"><h5>Gender: <span class="text-secondary mx-3">{{member.gender}}</span></h5></li>
+                                        <li class="list-group-item"><h5>Address: <span class="text-secondary mx-3">{{member.address}}</span></h5></li>
+                                        <li class="list-group-item"><h5>Plan: <span class="text-secondary mx-3">{{member.plan}}</span></h5></li>
+                                        <li class="list-group-item"><h5>Package: <span class="text-secondary mx-3">{{member.package}}</span></h5></li>
+                                        <li class="list-group-item"><h5>Trainer: <span class="text-secondary mx-3">{{member.trainer}}</span></h5></li>
+                                        <li class="list-group-item"><h5>Date: <span class="text-secondary mx-3">{{member.dateCreated}}</span></h5></li>
+                                    </ul>
+                                    <div class="card-body">
+                                      <a href="{% url 'members'%}" class=" card-link btn btn-sm btn-primary">Go back</a>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>    			
+                    </div>
+                </div>
+            </div>
+        </main>      
+    </div>
+
+{% endblock content %}

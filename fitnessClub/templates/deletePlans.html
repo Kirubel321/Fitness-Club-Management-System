@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="containe-fluid">
+                <div class="row mt-3 ml-3 mr-3">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container m-5 pl-5">
+        
+                                    <form action="{% url 'deletePlans' item.id %}" method="post">
+                                        {% csrf_token %}
+                            
+                                        <div class="card m-5 pl-5">
+                                                <div class="card-header">
+                                                    
+                                                    </div>
+                                                <div class="card-body">
+                                                        
+                                                    <p>Are you sure you want to delete "{{item}}"</p>
+                                                </div>
+                                                        
+                                                <div class="card-footer">
+                                                    <a href="{% url 'plans' %}">Cancel</a>
+                                                    <input type="submit" value="Confirm">
+                                                </div>
+                                            </div>
+                                        
+                                    </form>
+                                </div>                                                 
+                            </div>
+                        </div>      			
+                    </div>
+                </div>
+            </div>
+        </main>      
+    </div>
+{% endblock content %}

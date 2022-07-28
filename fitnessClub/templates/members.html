@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container">
+                <div class="container">
+                    <h2 class="p-3">Members</h2>
+                    <form method="POST" action="" enctype="multipart/form-data">
+                         {% csrf_token %}
+                            <div class="card">
+                                <div class="card-header">
+                                        Members Registration
+                                    </div>
+                                <div class="card-body">
+                                        
+                                    {{form|crispy}}
+                                </div>
+                                        
+                                <div class="card-footer">
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                </div>
+                            </div>
+                        <div class="p-3">
+                            {% for message in messages %}
+                            <p>{{message}}</p>
+                            {% endfor %}
+                        </div>
+                        
+                    </form>
+                    
+                </div>
+                <div class="row my-5">
+                    <div class="col">
+                        <h2 class="p-3">Search</h2>
+                        <div class="card card-body">
+                            <form method="get">
+                                {{myFilter.form|crispy}}
+                            <button class="btn btn-primary" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="bg-dark text-white p-2 mt-5 rounded">
+                        <h5>Member List</h5>
+                    </div>
+                    
+                    <hr>
+                    <div class="card card-body">
+                        
+                            <div class="d-flex justify-content-end">
+                                <a href="{% url 'members' %}" class="btn btn-primary btn-sm">
+                                    New + 
+                                </a>
+                            </div>
+                        <div class="table-responsive">    
+                                <table class="table table-sm">
+                                        <tr class="bg-light p-2">
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone Number</th>
+                                            <th>Gender</th>
+                                            <th>Address</th>
+                                            <th>Plan</th>
+                                            <th>Package</th>
+                                            <th>Trainer</th>
+                                            <th>Date</th>
+                                            <th>Detail</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
+                                            
+                                        </tr>
+                                    
+                                    
+                                    {% for members in member %}
+                                        <tr>
+                                            <th>{{forloop.counter}}</th>
+                                            <th>{{members.firstName}} {{members.lastName}}</th>
+                                            <th>{{members.email}}</th>
+                                            <th>{{members.phoneNumber}}</th>
+                                            <th>{{members.gender}}</th>
+                                            <th>{{members.address}}</th>
+                                            <th>{{members.plan}}</th>
+                                            <th>{{members.package}}</th>
+                                            <th>{{members.trainer}}</th>
+                                            <th>{{members.dateCreated}}</th>
+                                            <th><a href="{% url 'membersDetailView' members.id %}" class="btn btn-sm btn-info">View</a></th>
+                                            <th><a href="{% url 'updateMembers' members.id %}" class="btn btn-sm btn-success">Update</a></th>
+                                            <th><a href="{% url 'deleteMembers' members.id %}" class="btn btn-sm btn-danger">Delete</a></th>
+                                            
+                                        </tr> 
+
+                                    {% endfor %}
+
+                                </table>
+                            </div>
+                    </div>
+                                
+                       
+                </div>
+            </div>
+             
+            
+        </main>                
+    </div>
+    
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'baseLog.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content%}
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        {% if not request.user.is.authenticated %}
+                        <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                        <div class="card-body">
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                               <div class="form-floating mb-3">
+                                    <input name="username" class="form-control" id="inputUsername" type="text" placeholder="Username" />
+                                    <label for="inputUsername">Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input name="password" class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                    <label for="inputPassword">Password</label>
+                                </div> 
+                                <div class="mt-4 mb-0 text-center">
+                                    <input type="submit" class="btn btn-primary" value="Login">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="p-3"> 
+                            {% for message in messages %}
+                            <p>{{message}}</p>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="card-footer text-center py-3">
+                            <div class="small"><a href={% url 'reset_password' %}>Forget password?</a></div>
+                        </div>
+                        <div class="card-footer text-center py-3">
+                            <div class="small"><a href={% url 'register' %}>Need an account? Sign up!</a></div>
+                        </div>
+                    
+                {% else %}
+                    <p>You're already logged in. Would you like to <a href={% url logout %}>logout</a>?</p>
+                {% endif %}
+            </div>
+{% endblock content%}

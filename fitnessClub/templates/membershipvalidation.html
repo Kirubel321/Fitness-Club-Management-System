@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container">
+                <div class="bg-dark text-white p-2 mt-5 rounded">
+                    <h5>Active Member List</h5>
+                </div>
+                <hr>
+                <div class="card card-body ">
+                    <div class="d-flex justify-content-end">
+                        <a href="{% url 'members' %}" class="btn btn-primary btn-sm">
+                            New +
+                        </a>
+                    </div>
+                    <div class="table-responsive">   
+                    <table class="table table-sm">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Gender</th>
+                            <th>Address</th>
+                            <th>Status</th>
+                            <th>Detail</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% for members in member %}
+                            <tr>
+                                <th>{{members.id}}</th>
+                                <th>{{members.firstName}} {{members.lastName}}</th>
+                                <th>{{members.email}}</th>
+                                <th>{{members.phoneNumber}}</th>
+                                <th>{{members.gender}}</th>
+                                <th>{{members.address}}</th>
+                                <th>{{members.status}}</th>
+                                <th><a href="{% url 'membersDetailView' members.id %}" class="btn btn-sm btn-info">View</a></th>
+                                <th><a href="{% url 'updateMembers' members.id %}" class="btn btn-sm btn-success">Update</a></th>
+                                <th><a href="{% url 'deleteMembers' members.id %}" class="btn btn-sm btn-danger">Delete</a></th>
+                            </tr> 
+
+                        {% endfor %}
+
+                    </table>
+                </div>
+                </div>
+                            
+                   
+            </div>
+        </main>              
+    </div>
+{% endblock content %}

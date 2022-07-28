@@ -1,0 +1,11 @@
+asgiref==3.5.2
+Django==4.0.4
+django-crispy-forms==1.14.0
+django-filter==22.1
+django-phonenumber-field==6.3.0
+gunicorn==20.1.0
+phonenumbers==8.12.50
+Pillow==9.1.1
+sqlparse==0.4.2
+tzdata==2022.1
+whitenoise==6.1.0
